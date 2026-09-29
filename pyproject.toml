@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "backtrack"
+version = "0.1.0"
+description = "Total understanding of an academic paper: explanations, citation crawl, field position, prerequisites and learning paths."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+dependencies = [
+    "httpx>=0.27",
+    "pypdf>=4.0",
+    "mcp>=1.2,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "reportlab>=4"]
+
+[project.scripts]
+backtrack = "backtrack.cli:main"
+backtrack-mcp = "backtrack.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
